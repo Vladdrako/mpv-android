@@ -20,7 +20,7 @@ abi=armeabi-v7a
 [[ "$ndk_triple" == "i686"* ]] && abi=x86
 
 # build using the NDK's scripts, but keep object files in our build dir
-cd "$(dirname "$(which ndk-build)")/sources/third_party/shaderc"
+cd "$DIR/deps/google-shaderc"
 ndk-build -j$cores \
 	NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=Android.mk \
 	NDK_APPLICATION_MK="$application_mk" APP_ABI=$abi \
@@ -42,7 +42,7 @@ libdir=${prefix}/lib
 
 Name: shaderc_combined
 Description:
-Version: 2021.0-unknown
+Version: 2023.5-dev
 Libs: -L${libdir} -lshaderc_combined -llibc++
 Cflags: -I${includedir}
 END
